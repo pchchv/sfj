@@ -124,3 +124,12 @@ func requestConverter(server, line, pkg string, headerMap map[string]string, c c
 	r.res, r.err = gojson.Generate(res.Body, gojson.ParseJson, structName, pkg, tagList, subStruct, convertFloats)
 	c <- r
 }
+
+func deleteEmpty(strs []string) (r []string) {
+	for _, str := range strs {
+		if str != "" {
+			r = append(r, str)
+		}
+	}
+	return
+}
