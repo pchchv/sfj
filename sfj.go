@@ -38,3 +38,10 @@ func Do(pkg, server string, lines []string, headerMap map[string]string, insecur
 
 	return format.Source([]byte(fileContent))
 }
+
+// DoRaw performs the conversion of JSON passed as a string into go structure definitions.
+// pkg is a new package for the generated structures.
+func DoRaw(pkg, json string) ([]byte, error) {
+	r := jsonToStruct(pkg, json)
+	return r.res, r.err
+}
