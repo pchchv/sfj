@@ -5,6 +5,11 @@ import (
 	"strings"
 )
 
+type result struct {
+	res []byte
+	err error
+}
+
 // replaceParameters replaces parameters in the route string,
 // if present returns the path with the replaced parameter and
 // the path with the parameter (without ':') to build the name.
