@@ -125,10 +125,10 @@ func requestConverter(server, line, pkg string, headerMap map[string]string, c c
 	c <- r
 }
 
-func deleteEmpty(strs []string) (r []string) {
+func deleteEmpty(strs []string) (res []string) {
 	for _, str := range strs {
 		if str != "" {
-			r = append(r, str)
+			res = append(res, str)
 		}
 	}
 	return
