@@ -133,3 +133,15 @@ func deleteEmpty(strs []string) (res []string) {
 	}
 	return
 }
+
+func jsonToStruct(pkg, json string) (res result) {
+	mutex.Lock()
+	unnamedStruct++
+	structName := "Foo" + strconv.Itoa(unnamedStruct)
+	mutex.Unlock()
+
+	tagList := []string{"json"}
+	subStruct, convertFloats := true, true
+	res.res, res.err = gojson.Generate(strings.NewReader(json), gojson.ParseJson, structName, pkg, tagList, subStruct, convertFloats)
+	return
+}
